@@ -1,0 +1,40 @@
+{% extends "baseWeb.html" %}
+
+{% block title %}  Edit TV Show  {% endblock %} 
+
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-4 offset-2"><h2>Edit show {{show.id}}</h2></div>
+        <div class="col-4 align-text-right"><a href="/shows">Go back</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 offset-2">
+            <form action="/shows/{{show.id}}/update" method="POST" class="mb-2">
+                {% csrf_token %}
+                <div class="col-md-6 form-group">
+                    <label for="title_id" class="form_label">Title</label>
+                    <input type="text" class="form-control" id="title_id" required name="title" value="{{show.title}}">
+                </div>
+                <div class="col-md-6 form-group"">
+                    <label for="network_id" class="form_label">Network</label>
+                    <input type="text" class="form-control" id="network_id" required name="network" value="{{show.network.network}}">
+                </div>
+                <div class="col-md-4 form-group"">
+                    <label for="release_id" class="form_label">Release</label>
+                    <input type="date" class="form-control" id="release_id" required name="release" value={{show.release|date:'Y-m-d'}}>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="description_id" class="form_label">Description</label>
+                    <textarea id="description_id" class="form-control" name="description" rows=6>{{show.description}}</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Edit</button>
+            </form>
+            <a href="/shows/{{show.id}}">Go to show</a>    
+        </div>
+    </div>
+</div>    
+{% endblock %} 

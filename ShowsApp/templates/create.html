@@ -1,0 +1,42 @@
+{% extends "baseWeb.html" %}
+
+{% block title %}  Create TV Show  {% endblock %} 
+
+{% block body %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-4 offset-2"><h2>Add a new show</h2></div>
+        <div class="col-4 align-text-right"><a href="/shows">Go back</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 offset-2">
+            <form action="/shows/create" method="POST">  {% csrf_token %}
+
+                <div class="col-md-6 form-group">
+                    <label for="title_id" class="form_label">Title</label>
+                    <input type="text" class="form-control" required id="title_id" name="title">
+                </div>
+
+                <div class="col-md-6 form-group"">
+                    <label for="network_id" class="form_label">Network</label>
+                    <input type="text" class="form-control" required id="network_id" name="network">
+                </div>
+
+                <div class="col-md-4 form-group"">
+                    <label for="release_id" class="form_label">Release</label>
+                    <input type="date" class="form-control" required id="release_id" name="release">
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="description_id" class="form_label">Description</label>
+                    <textarea id="description_id" class="form-control" name="description" rows=6></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Create</button>
+            </form>
+        </div>
+    </div>
+</div>  
+
+{% endblock %}

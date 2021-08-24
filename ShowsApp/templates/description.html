@@ -1,0 +1,42 @@
+{% extends "baseWeb.html" %}
+
+{% block title %}  TV Show desc {% endblock %} 
+
+{% block body %}
+
+    {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="col-4 offset-2"><h2>TV Show {{show.id}}</h2></div>
+        <div class="col-4 align-text-right"><a href="/shows">Go back</a></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-7 offset-2">
+            <div class="row">
+                <div class="col-2 align-text-right">Title:</div>
+                <div class="col-8 align-text-left">{{show.title}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-text-right">Network:</div>
+                <div class="col-8 align-text-left">{{show.network.network}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-text-right">Release Date:</div>
+                <div class="col-8 align-text-left">{{show.release|date:'d-m-Y'}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-text-right">Description:</div>
+                <div class="col-8 align-text-left">{{show.description}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-text-right">Last Updated:</div>
+                <div class="col-8 align-text-left">{{show.updated_at|date:'d-m-Y'}}</div>
+            </div>
+            <div class="mt-3">
+                <a href="/shows/{{show.id}}/edit"> <i class="fas fa-edit"></i></a> |
+                <a href="/shows/{{show.id}}/destroy"> <i class="fas fa-trash-alt"></i></a>
+            </div>
+        </div>    
+    </div>    
+{% endblock%}
